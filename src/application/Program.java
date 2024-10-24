@@ -41,8 +41,9 @@ public class Program {
 			System.out.println("Invalid date format");;
 		} catch (DomainException i) {
 			System.out.println("Error in Resevation"+i.getMessage());
+		}catch (RuntimeException r) {
+			System.out.println("Unexpected Error: ");
 		}
-
 		sc.close();
 	}
 }
