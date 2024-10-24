@@ -1,0 +1,33 @@
+In Java, both `RuntimeException` and `Exception` are types of exceptions, but they are handled differently in terms of how the compiler treats them and how you write code to handle them. The key difference between `extends RuntimeException` and `extends Exception` lies in whether the exception is checked or unchecked:
+
+### 1. **Checked Exceptions (`extends Exception`)**
+   - **Description**: When a class extends `Exception`, it creates a **checked exception**. Checked exceptions are subject to Java's compile-time checking mechanism.
+   - **Handling**: The compiler forces you to handle these exceptions either by:
+     - Using a `try-catch` block to catch the exception, or
+     - Declaring it in the method signature using the `throws` keyword.
+   - **Examples**: `IOException`, `SQLException`, `ClassNotFoundException`.
+   - **Usage**: Checked exceptions are used for conditions that are expected and recoverable, like file not found errors or database connection issues.
+
+   ```java
+   public void someMethod() throws IOException {
+       // Code that may throw a checked exception
+   }
+   ```
+
+### 2. **Unchecked Exceptions (`extends RuntimeException`)**
+   - **Description**: When a class extends `RuntimeException`, it creates an **unchecked exception**. Unchecked exceptions are not checked at compile-time.
+   - **Handling**: You are not required to explicitly handle unchecked exceptions. These are usually programming errors that can be avoided or are unexpected during runtime.
+   - **Examples**: `NullPointerException`, `ArrayIndexOutOfBoundsException`, `IllegalArgumentException`.
+   - **Usage**: Unchecked exceptions are used for programming logic errors, such as null references, out-of-bounds access, or illegal argument values.
+
+   ```java
+   public void someMethod() {
+       // Code that may throw an unchecked exception
+   }
+   ```
+
+### Summary of Differences:
+- **Checked Exceptions (`extends Exception`)**: Must be either caught or declared. Represents errors that are expected or can be recovered from.
+- **Unchecked Exceptions (`extends RuntimeException`)**: Do not need to be explicitly handled. Represents programming errors or unexpected runtime issues.
+
+Choosing between these depends on whether the exception should be anticipated by the caller (checked) or if it indicates a programming error (unchecked).
