@@ -9,8 +9,8 @@ import model.entities.Reservation;
 
 public class Program {
 	public static void main(String[] args) throws ParseException {
-		
-		System.out.println("Terrible Version");
+
+		System.out.println("Bad Version");
 		Scanner sc = new Scanner(System.in);
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
@@ -34,17 +34,15 @@ public class Program {
 			System.out.println("Check-Out date (dd/MM/yyyy): ");
 			checkOut = sdf.parse(sc.next());
 
-			Date now = new Date();
-
-			if (checkIn.before(now) || checkOut.before(now)) {
-				System.out.println("Error in reservation: Reservation dates for updtar must be future dates");
-			} else if (!checkOut.after(checkIn)) {
-				System.out.println("Error in reservation: check-out date must be after the check-in date");
-			} else {
-				reservation.updateDates(checkIn, checkOut);
-				System.out.println("Reservation: " + reservation);
-
+			String error = reservation.updateDates(checkIn, checkOut);
+			if (error != null) {
+				System.out.println("Resrevation: " + reservation);
 			}
+			else 
+			{
+				System.out.println("Resrevation: " + reservation);
+
+			}			
 		}
 		sc.close();
 	}
